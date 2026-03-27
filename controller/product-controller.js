@@ -187,7 +187,6 @@ const getAllProduct = async (req, res) => {
   try {
     const products = await Product.find();
 
-    console.log(products)
     return res
       .status(200)
       .json({ success: true, message: "All product fetched", products });
@@ -230,14 +229,12 @@ const getProductsForCart = async (req, res) => {
 const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("Procuct id:", id);
     const products = await Product.findById(id);
 
     return res
       .status(200)
       .json({ success: true, message: "All product fetched", products });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ success: false, message: "Server error" });
   }
 };
@@ -245,7 +242,6 @@ const getProductById = async (req, res) => {
 const getProductByTypeAndName = async (req, res) => {
   try {
     const { type, productName } = req.body;
-    console.log(req.body);
 
     // Filter
     const filter = {};
@@ -290,7 +286,6 @@ const getProductByRange = async (req, res) => {
 
     // Filter by type
     const product = await Product.find({ range });
-    console.log("single product", product)
 
     // Return response
     return res.status(200).json({
