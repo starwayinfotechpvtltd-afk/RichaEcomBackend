@@ -8,6 +8,8 @@ const {
   getProductByTypeAndName,
   getProductByType,
   getProductByRange,
+  searchProduct,
+  updateProduct,
   deleteProduct,
 } = require("../controller/product-controller");
 const upload = require("../middleware/multer");
@@ -35,6 +37,15 @@ productRouter.post("/getProductById/:id", getProductById);
 productRouter.post("/getProductbyTypeName", getProductByTypeAndName);
 productRouter.post("/getProductbyType", getProductByType);
 productRouter.post("/getProductbyRange", getProductByRange);
-productRouter.post("/deleteProduct", deleteProduct);
+productRouter.post("/searchproduct", searchProduct);
+productRouter.put(
+  "/updateproduct/:id",
+  upload.fields([
+    { name: "productImage", maxCount: 10 },
+    { name: "functionsImage", maxCount: 10 },
+  ]),
+  updateProduct,
+);
+productRouter.delete("/deleteProduct/:id", deleteProduct);
 
 module.exports = productRouter;

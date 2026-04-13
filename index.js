@@ -12,7 +12,7 @@ connectDb();
 
 // CORS Configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URI || "http://localhost:5173",
+  origin: [process.env.FRONTEND_URI || "http://localhost:5173", "http://localhost:5174"],
   credentials: true,
   optionsSuccessStatus: 200,
 };
@@ -24,6 +24,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+console.log("ENV MONGODB_URI:", process.env.MONGODB_URI);
 // Session configuration
 const store = new MongoDBStore({
   uri: process.env.MONGODB_URI,
