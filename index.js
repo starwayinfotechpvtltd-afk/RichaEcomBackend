@@ -11,13 +11,23 @@ const PORT = process.env.PORT || 5000;
 connectDb();
 
 // CORS Configuration
+const allowedOrigins = process.env.FRONTEND_URI
+  ? process.env.FRONTEND_URI.split(",").map(origin => origin.trim())
+  : ["http://localhost:5173", "http://localhost:5174"];
+
 const corsOptions = {
-  origin: [process.env.FRONTEND_URI || "http://localhost:5173", "http://localhost:5174"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200,
 };
 
-// Apply CORS middleware - this handles preflight automatically
+// Apply CORS middleware
 app.use(cors(corsOptions));
 
 // Body parsing middleware

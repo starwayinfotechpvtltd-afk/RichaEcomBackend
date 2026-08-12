@@ -11,8 +11,7 @@
     "express-session": "^1.19.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.1.2",
-    "multer": "^2.0.2",
-    "nodemon": "^3.1.11"
+    "multer": "^2.0.2"
   },
   "name": "server",
   "version": "1.0.0",
@@ -25,7 +24,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Debkanta393/myhomestore-backend.git"
-  }, 
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/Debkanta393/myhomestore-backend/issues"
   },
-  "homepage": "https://github.com/Debkanta393/myhomestore-backend#readme"
+  "homepage": "https://github.com/Debkanta393/myhomestore-backend#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
